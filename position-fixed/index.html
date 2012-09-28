@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="uft-8">
+    <title>CSS position: fixed; testing</title>
+    <style>
+      html, body, header, footer, section, h1 { margin: 0; padding: 0; border: none; }
+      html, body { height: 100%; font-family: Monospace; }
+      body { height: auto !important; min-height: 100%; }
+      header { height: 50px; background-color: #222; }
+      footer { height: 50px; background-color: #222; }
+      header h1, footer h1 { text-align: center; color: #eee; font-size: 32px; line-height: 50px; }
+      #content { height: 100%; background-color: #eee; overflow: auto; -webkit-overflow-scrolling: touch; }
+      #content * {  -webkit-transform: translate3d(0,0,0); }
+      #content h1 { font-size: 2em; margin: 0.5em; }
+      #content ul { list-style: none; padding: 0; }
+      #content ul li { font-size: 2em; padding: 1em; border-bottom: 1px solid #ddd; }
+    </style>
+  </head>
+  <body>
+
+    <header>
+      <h1>Header</h1>
+    </header>
+
+    <section id="content">
+      <h1>Some list:</h1>
+      <ul>
+        <li>List item 1</li>
+        <li>List item 2</li>
+        <li>List item 3</li>
+        <li>List item 4</li>
+        <li>List item 5</li>
+        <li>List item 6</li>
+        <li>List item 7</li>
+        <li>List item 8</li>
+        <li>List item 9</li>
+        <li>List item 10</li>
+        <li>List item 11</li>
+        <li>List item 12</li>
+        <li>List item 13</li>
+        <li>List item 14</li>
+        <li>List item 15</li>
+        <li>List item 16</li>
+        <li>List item 17</li>
+        <li>List item 18</li>
+        <li>List item 19</li>
+        <li>List item 20</li>
+        <li>List item 21</li>
+        <li>List item 22</li>
+        <li>List item 23</li>
+        <li>List item 24</li>
+        <li>List item 2</li>
+        <li>List item 26</li>
+        <li>List item 27</li>
+        <li>List item 28</li>
+        <li>List item 29</li>
+        <li>List item 30</li>
+      </ul>
+    </section>
+
+    <footer>
+      <h1>Footer</h1>
+    </footer>
+
+    <script>
+      (function () {
+        var headerHeight = 50;
+        var footerHeight = 50;
+        var content = document.getElementById('content');
+
+        function resize() {
+          var height = window.innerHeight - headerHeight - footerHeight;
+          content.style.height = height + 'px';
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+      }());
+    </script>
+  </body>
+</html>

@@ -13,7 +13,6 @@ html, body, #gallery {
 .page {
     min-height: 100%;
     padding: 1em;
-    -webkit-transform: translate3d(0, 0, 0);
 }
 .page ul {
     list-style: none;

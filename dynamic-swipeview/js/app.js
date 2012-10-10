@@ -35,6 +35,7 @@
     function start() {
         log('start');
         var gallery = new SwipeView('#gallery', {
+            loop: false,
             numberOfPages: 3
         });
 

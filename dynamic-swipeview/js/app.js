@@ -18,13 +18,13 @@
         return ul;
     }
 
-    function createPage(num) {
+    function createPage(num, name) {
         var article = document.createElement('article');
         article.setAttribute('id', 'page-' + num);
         article.className = 'page';
 
         var title = document.createElement('h1');
-        title.textContent = 'Page ' + num;
+        title.textContent = 'Page ' + name;
         article.appendChild(title);
 
         article.appendChild(getListOfLength(100));
@@ -35,7 +35,6 @@
     function start() {
         log('start');
         var gallery = new SwipeView('#gallery', {
-            loop: false,
             numberOfPages: 3
         });
 
@@ -46,9 +45,9 @@
             master.className += ' overthrow';
         }
 
-        var previous = createPage(0);
-        var current = createPage(1);
-        var next = createPage(2);
+        var previous = createPage(0, 'prev');
+        var current = createPage(1, 'current');
+        var next = createPage(2, 'next');
 
         gallery.masterPages[0].appendChild(previous);
         gallery.masterPages[0].className += ' overthrow';

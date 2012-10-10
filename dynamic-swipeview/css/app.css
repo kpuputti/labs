@@ -14,6 +14,7 @@ html, body, #gallery {
     min-height: 100%;
     padding: 1em;
     background-color: #eee;
+    -webkit-transform: translateZ(0);
 }
 .page ul {
     list-style: none;

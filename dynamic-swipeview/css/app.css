@@ -15,6 +15,8 @@ html, body, #gallery {
     padding: 1em;
     background-color: #eee;
     -webkit-transform: translateZ(0);
+    -webkit-perspective: 1000;
+    -webkit-backface-visibility: hidden;
 }
 .page ul {
     list-style: none;

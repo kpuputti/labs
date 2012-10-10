@@ -45,7 +45,9 @@
         });
 
         function addPage(index) {
-            gallery.masterPages[index].appendChild(createPage(index));
+            var master = gallery.masterPages[index];
+            master.appendChild(createPage(index));
+            master.className += ' overthrow';
         }
 
         for (var i = 0; i < 3; i++) {

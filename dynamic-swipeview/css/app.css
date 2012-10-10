@@ -29,7 +29,7 @@ html, body, #gallery {
     padding: 0 1em;
 }
 
-#swipeview-slider > div {
+.overthrow {
     overflow: scroll;
     -webkit-overflow-scrolling: touch;
 }

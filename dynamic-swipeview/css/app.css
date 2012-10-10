@@ -28,6 +28,9 @@ html, body, #gallery {
     border-top: 1px solid #bbb;
     padding: 0 1em;
 }
+.page button {
+    margin: 0.5em;
+}
 
 #swipeview-slider > div {
     overflow: scroll;

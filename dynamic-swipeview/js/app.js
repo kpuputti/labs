@@ -7,11 +7,6 @@
         }
     }
 
-    function getColor(num) {
-        var colors = ['red', 'green', 'blue'];
-        return '#eee';//colors[num % 3];
-    }
-
     function getListOfLength(len) {
         var ul = document.createElement('ul');
         var li;
@@ -27,7 +22,6 @@
         var article = document.createElement('article');
         article.setAttribute('id', 'page-' + num);
         article.className = 'page';
-        article.style.backgroundColor = getColor(num);
 
         var title = document.createElement('h1');
         title.textContent = 'Page ' + num;
@@ -41,18 +35,28 @@
     function start() {
         log('start');
         var gallery = new SwipeView('#gallery', {
-            loop: false
+            numberOfPages: 3
         });
 
         function addPage(index) {
+            log('add page:', index);
             var master = gallery.masterPages[index];
             master.appendChild(createPage(index));
             master.className += ' overthrow';
         }
 
-        for (var i = 0; i < 3; i++) {
-            addPage(i);
-        }
+        var previous = createPage(0);
+        var current = createPage(1);
+        var next = createPage(2);
+
+        gallery.masterPages[0].appendChild(previous);
+        gallery.masterPages[0].className += ' overthrow';
+
+        gallery.masterPages[1].appendChild(current);
+        gallery.masterPages[1].className += ' overthrow';
+
+        gallery.masterPages[2].appendChild(next);
+        gallery.masterPages[2].className += ' overthrow';
 
         window.gallery = gallery;
     }

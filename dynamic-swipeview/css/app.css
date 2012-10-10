@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    background-color: #eee;
+    color: #222;
+}
+html, body, #gallery {
+    height: 100%;
+}
+.page {
+    min-height: 100%;
+    padding: 1em;
+}
+.page ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 1em;
+}
+.page ul li {
+    height: 3em;
+    line-height: 3em;
+    color: #bbb;
+    background-color: #eee;
+    border-top: 1px solid #bbb;
+    padding: 0 1em;
+}

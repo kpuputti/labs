@@ -46,13 +46,19 @@
             master.className += ' overthrow';
         }
 
-        var previous = createPage(0, 'prev');
-        var current = createPage(1, 'current');
-        var next = createPage(2, 'next');
+        var previous = createPage(0, 'prev 0');
+        var current = createPage(1, 'current 1');
+        var next = createPage(2, 'next 2');
 
-        gallery.masterPages[0].appendChild(previous);
-        gallery.masterPages[1].appendChild(current);
-        gallery.masterPages[2].appendChild(next);
+        var masterPrev = gallery.masterPages[1];
+        var masterCurrent = gallery.masterPages[2];
+        var masterNext = gallery.masterPages[0];
+
+        masterPrev.appendChild(previous);
+        masterCurrent.appendChild(current);
+        masterNext.appendChild(next);
+
+        gallery.goToPage(1);
 
         window.gallery = gallery;
     }

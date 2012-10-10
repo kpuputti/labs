@@ -13,6 +13,7 @@ html, body, #gallery {
 .page {
     min-height: 100%;
     padding: 1em;
+    -webkit-transform: translateZ(0px);
 }
 .page ul {
     list-style: none;
@@ -26,4 +27,9 @@ html, body, #gallery {
     background-color: #eee;
     border-top: 1px solid #bbb;
     padding: 0 1em;
+}
+
+#swipeview-slider > div {
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
 }

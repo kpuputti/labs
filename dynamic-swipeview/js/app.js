@@ -51,13 +51,8 @@
         var next = createPage(2, 'next');
 
         gallery.masterPages[0].appendChild(previous);
-        gallery.masterPages[0].className += ' overthrow';
-
         gallery.masterPages[1].appendChild(current);
-        gallery.masterPages[1].className += ' overthrow';
-
         gallery.masterPages[2].appendChild(next);
-        gallery.masterPages[2].className += ' overthrow';
 
         window.gallery = gallery;
     }

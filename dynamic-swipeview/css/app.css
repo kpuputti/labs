@@ -18,6 +18,11 @@ header h1 {
     text-align: center;
     color: #bbb;
 }
+header h1 .page-index {
+    float: right;
+    margin-right: 1em;
+    font-size: 20px;
+}
 html, body {
     height: 100%;
 }

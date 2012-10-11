@@ -78,6 +78,8 @@
             }
         }
 
+        log('page index:', gallery.pageIndex);
+        document.querySelector('.page-index').textContent = (gallery.pageIndex + 1) + '/' + slides.length;
     }
 
     function start() {
@@ -104,6 +106,8 @@
         masterPrev.appendChild(previous);
         masterCurrent.appendChild(current);
         masterNext.appendChild(next);
+
+        document.querySelector('.page-index').textContent = '1/' + slides.length;
 
         window.gallery = gallery;
     }

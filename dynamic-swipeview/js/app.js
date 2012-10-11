@@ -2,6 +2,16 @@
 
     var gallery;
 
+    var slides = [
+        {index: 0, name: 'a'},
+        {index: 1, name: 'b'},
+        {index: 2, name: 'c'},
+        {index: 3, name: 'd'},
+        {index: 4, name: 'e'},
+        {index: 5, name: 'f'},
+        {index: 6, name: 'g'}
+    ];
+
     function log() {
         if (window.console && console.log && console.log.apply) {
             var args = Array.prototype.slice.call(arguments);
@@ -20,14 +30,13 @@
         return ul;
     }
 
-    function createPage(num) {
+    function createPage(slide) {
         var article = document.createElement('article');
-        article.setAttribute('id', 'page-' + num);
-        article.setAttribute('data-pageindex', num);
+        article.setAttribute('id', 'page-' + slide.index);
         article.className = 'page';
 
         var title = document.createElement('h1');
-        title.textContent = 'Page ' + num;
+        title.textContent = 'Page ' + slide.index + ': ' + slide.name;
         article.appendChild(title);
 
         article.appendChild(getListOfLength(100));
@@ -35,76 +44,56 @@
         return article;
     }
 
-    function onPageChange() {
+    function onFlip() {
         log('flip');
 
         var currentMasterIndex = gallery.currentMasterPage;
         var prevMasterIndex = (3 + gallery.currentMasterPage - 1) % 3;
         var nextMasterIndex = (3 + gallery.currentMasterPage + 1) % 3;
 
+        log('current master index:', currentMasterIndex);
+
         var prevMaster = gallery.masterPages[prevMasterIndex];
         var currentMaster = gallery.masterPages[currentMasterIndex];
         var nextMaster = gallery.masterPages[nextMasterIndex];
 
-        var currentPage = currentMaster.querySelector('article');
+        var masterPage, upcomingIndex, pageIndex, page;
 
-        if (!currentPage) {
-            log('no current page');
-            gallery.goToPage(2);
-            return;
-        }
+        for (var i = 0; i < 3; i++) {
+            masterPage = gallery.masterPages[i];
+            page = masterPage.querySelector('.page');
+            upcomingIndex = masterPage.dataset.upcomingPageIndex;
+            pageIndex = masterPage.dataset.pageIndex;
 
-        var currentIndex = window.parseInt(currentPage.getAttribute('data-pageindex'), 10);
-        log('current page index:', currentIndex);
+            log('i:', i,
+                'upcoming:', upcomingIndex,
+                'page index:', pageIndex);
 
-        prevMaster.innerHTML = '';
-        nextMaster.innerHTML = '';
-        var prevIndex = currentIndex - 1;
-        var nextIndex = currentIndex + 1;
-
-        if (prevIndex >= 0) {
-            prevMaster.appendChild(createPage(currentIndex - 1));
-        } else {
-            // prevent going to prev page
-            prevMaster.setAttribute('data-isempty', 'yes');
-        }
-        if (nextIndex < 10) {
-            nextMaster.appendChild(createPage(currentIndex + 1));
-        } else {
-            // prevent going to next page
-            nextMaster.setAttribute('data-isempty', 'yes');
+            if (upcomingIndex !== pageIndex) {
+                log('upcoming != pageIndex', upcomingIndex, pageIndex);
+                masterPage.innerHTML = '';
+                masterPage.appendChild(createPage(slides[upcomingIndex]));
+            }
         }
 
     }
 
     function start() {
         log('start');
+
+        var galleryEl = document.getElementById('gallery');
+        galleryEl.style.height = (window.innerHeight - 50) + 'px';
+
         gallery = new SwipeView('#gallery', {
-            loop: true,
-            numberOfPages: 3
+            loop: false,
+            numberOfPages: slides.length
         });
 
-        gallery.onFlip(onPageChange);
-        gallery.onMoveOut(function (e) {
-            log('move out from:', gallery.currentMasterPage);
-            var currentMaster = gallery.masterPages[gallery.currentMasterPage];
+        gallery.onFlip(onFlip);
 
-            if (!currentMaster) {
-                log('empty');
-            }
-
-        });
-
-        function addPage(index) {
-            log('add page:', index);
-            var master = gallery.masterPages[index];
-            master.appendChild(createPage(index));
-            master.className += ' overthrow';
-        }
-
-        var previous = createPage(0);
-        var current = createPage(1);
-        var next = createPage(2);
+        var previous = createPage(slides[slides.length - 1]);
+        var current = createPage(slides[0]);
+        var next = createPage(slides[1]);
 
         var masterPrev = gallery.masterPages[0];
         var masterCurrent = gallery.masterPages[1];

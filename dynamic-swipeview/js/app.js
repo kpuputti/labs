@@ -57,6 +57,8 @@
         var currentMaster = gallery.masterPages[currentMasterIndex];
         var nextMaster = gallery.masterPages[nextMasterIndex];
 
+        currentMaster.scrollTop = 0;
+
         var masterPage, upcomingIndex, pageIndex, page;
 
         for (var i = 0; i < 3; i++) {

@@ -32,11 +32,10 @@
 
     function createPage(slide) {
         var article = document.createElement('article');
-        article.setAttribute('id', 'page-' + slide.index);
         article.className = 'page';
 
         var title = document.createElement('h1');
-        title.textContent = 'Page ' + slide.index + ': ' + slide.name;
+        title.textContent = 'Page ' + (slide.index + 1) + ': ' + slide.name;
         article.appendChild(title);
 
         article.appendChild(getListOfLength(100));

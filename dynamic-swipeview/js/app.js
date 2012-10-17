@@ -47,14 +47,9 @@
         log('flip');
 
         var currentMasterIndex = gallery.currentMasterPage;
-        var prevMasterIndex = (3 + gallery.currentMasterPage - 1) % 3;
-        var nextMasterIndex = (3 + gallery.currentMasterPage + 1) % 3;
+        var currentMaster = gallery.masterPages[currentMasterIndex];
 
         log('current master index:', currentMasterIndex);
-
-        var prevMaster = gallery.masterPages[prevMasterIndex];
-        var currentMaster = gallery.masterPages[currentMasterIndex];
-        var nextMaster = gallery.masterPages[nextMasterIndex];
 
         currentMaster.scrollTop = 0;
 

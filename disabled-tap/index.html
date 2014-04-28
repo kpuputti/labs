@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hammer.js tap gesture on a disabled button</title>
+  </head>
+  <body>
+
+    <label>
+      <input id="toggle" type="checkbox"> toggle disabled
+    </label>
+    <button id="tap-button">Tap me</button>
+
+    <script src="bower_components/jquery/jquery.js"></script>
+    <script src="bower_components/hammerjs/dist/jquery.hammer.js"></script>
+    <script>
+      var $toggle = $('#toggle');
+      var $tap = $('#tap-button');
+
+      $(document.body).hammer();
+
+      $toggle.on('change', function() {
+        $tap.prop('disabled', $(this).is(':checked'));
+      });
+      $tap.on('tap', function() { alert('tap on button'); });
+    </script>
+  </body>
+</html>
